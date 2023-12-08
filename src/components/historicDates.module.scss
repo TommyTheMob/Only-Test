@@ -1,0 +1,110 @@
+@import '../assets/colors';
+
+.container {
+  width: 1920px;
+  height: 1080px;
+}
+
+.wrapper {
+  border: 1px solid $blackBlue10;
+  border-top: none;
+  border-bottom: none;
+
+  width: 75%;
+  height: 100%;
+
+  margin: 0 auto;
+
+  position: relative;
+}
+
+.verticalVector {
+  background: $blackBlue10;
+
+  width: 1px;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  z-index: -1;
+}
+
+.horizontalVector {
+  background: $blackBlue10;
+
+  width: 100%;
+  height: 1px;
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  z-index: -1;
+}
+
+.roundWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 1;
+}
+
+.round {
+  border: 1px solid $blackBlue20;
+  border-radius: 50%;
+
+  width: 530px;
+  height: 530px;
+
+  position: relative;
+
+  transition: transform 0.8s;
+}
+
+.dotsParent {
+  width: 536px;
+  height: 464px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+
+  padding-top: 12%;
+}
+
+.border {
+  height: 120px;
+  width: 5px;
+
+  background: linear-gradient(#3877EE, #EF5DA8);
+}
+
+.textContent {
+  width: 353px;
+  height: 134px;
+
+  margin-left: 78px;
+}
+
+.text {
+  font-size: 3.5rem;
+  line-height: 67.2px;
+  font-weight: 700;
+  color: $blackBlue;
+}
+
+.name {
+  position: absolute;
+  top: 27%;
+  right: 33%;
+}

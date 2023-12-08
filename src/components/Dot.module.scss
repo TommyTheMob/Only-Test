@@ -1,0 +1,105 @@
+@import '../assets/colors';
+
+.dotTrigger {
+  border-radius: 50%;
+
+  width: 50px;
+  height: 50px;
+
+  position: absolute;
+
+  cursor: pointer;
+}
+
+.name {
+  position: absolute;
+  top: 0;
+  left: 50px;
+
+  font-weight: 700;
+}
+
+.dot {
+  background: $blackBlue;
+
+  border-radius: 50%;
+
+  width: 6px;
+  height: 6px;
+
+  position: relative;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  transition: width .4s, height .4s, background .6s;
+
+  &.active {
+    background: white;
+
+    border: 1px solid #303E5880;
+
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.dotNumWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.dotNum {
+  font-size: 20px;
+  line-height: 30px;
+  color: $blackBlue;
+
+  transition: transform .8s;
+}
+
+.topLeft {
+  top: 4px;
+  left: 25%;
+
+  transform: translate(-50%, -50%);
+}
+
+.topRight {
+  top: 4px;
+  right: 25%;
+
+  transform: translate(50%, -50%);
+}
+
+.midLeft {
+  left: 4px;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+}
+
+.midRight {
+  right: 4px;
+  top: 50%;
+
+  transform: translate(50%, -50%);
+}
+
+.botLeft {
+  bottom: 4px;
+  left: 25%;
+
+  transform: translate(-50%, 50%);
+}
+
+.botRight {
+  bottom: 4px;
+  right: 25%;
+
+  transform: translate(50%, 50%);
+}
