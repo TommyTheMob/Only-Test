@@ -27,3 +27,16 @@
 .yearTo {
   color: $Fuschia100;
 }
+
+@media (max-width:320px) {
+  .years {
+    width: 273px;
+
+    top: 163px;
+    transform: translateX(-50%);
+
+    font-size: 56px;
+    line-height: 72.46px;
+
+  }
+}

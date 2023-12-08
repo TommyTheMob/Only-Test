@@ -1,28 +1,45 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import cls from './historicDates.module.scss'
 import cn from 'classnames'
 import Dot from "@/components/Dot"
 import Years from "@/components/Years";
 import Buttons from "@/components/Buttons";
+import SwiperBlock from "@/components/SwiperBlock";
+import { useMediaQuery } from 'react-responsive'
+import {dotsData} from "@/data/dotsData";
+import SimpleDots from "@/components/SimpleDots";
 
-const HistoricDates = () => {
+const HistoricDates: React.FC = () => {
+    const isMobile = useMediaQuery({query: '(max-width: 320px)'})
+    const isDesktop = !isMobile
+
+    const positions = ['topRight', 'midRight', 'botRight', 'botLeft', 'midLeft', 'topLeft']
 
     const [angle, setAngle] = useState(0)
     const [active, setActive] = useState('topRight')
 
-    const [yearFrom, setYearFrom] = useState(2015)
-    const [yearTo, setYearTo] = useState(2022)
+    const [yearFrom, setYearFrom] = useState(1980)
+    const [yearTo, setYearTo] = useState(1986)
 
-    const positions = ['topLeft', 'midLeft', 'botLeft', 'botRight', 'midRight', 'topRight']
+    const [isActive, setIsActive] = useState(false)
 
-    console.log('rerender HistoricDates')
+    useEffect(() => {
+        if (isMobile) {
+            setIsActive(true)
+            const timer = setTimeout(() => {
+                setIsActive(false)
+            }, 800)
+
+            return () => clearTimeout(timer)
+        }
+    }, [active])
 
     return (
         <div className={cls.container}>
             <div className={cls.wrapper}>
-                <div className={cls.verticalVector}/>
-                <div className={cls.horizontalVector}/>
-                <div className={cls.roundWrapper}>
+                {isDesktop && <div className={cls.verticalVector}/>}
+                {isDesktop && <div className={cls.horizontalVector}/>}
+                {isDesktop && <div className={cls.roundWrapper}>
                     <div
                         className={cls.round}
                         style={{transform: `rotate(${angle}deg)`}}
@@ -34,7 +51,6 @@ const HistoricDates = () => {
                                 <Dot
                                     key={pos}
                                     position={pos}
-                                    num={i + 1}
                                     angle={angle}
                                     setAngle={setAngle}
                                     active={active}
@@ -45,9 +61,9 @@ const HistoricDates = () => {
                             ))}
                         </div>
                     </div>
-                </div>
+                </div>}
                 <div className={cls.title}>
-                    <div className={cls.border}/>
+                    {isDesktop && <div className={cls.border}/>}
                     <div className={cls.textContent}>
                         <span className={cls.text}>Исторические даты</span>
                     </div>
@@ -56,7 +72,32 @@ const HistoricDates = () => {
                     yearFrom={yearFrom}
                     yearTo={yearTo}
                 />
-               <Buttons />
+                {isMobile && <div className={cn(cls.name, isActive && cls.fadeIn)}>{dotsData[active].name}</div>}
+                {isMobile && <div className={cn(cls.divider, isActive && cls.fadeIn)} />}
+                <Buttons
+                    positions={positions}
+                    active={active}
+                    setActive={setActive}
+                    angle={angle}
+                    setAngle={setAngle}
+                    setYearFrom={setYearFrom}
+                    setYearTo={setYearTo}
+                />
+                <SwiperBlock
+                    active={active}
+                />
+                {isMobile &&
+                    // setting angle here IS ONLY for correct active dot positioning ONLY IF you switch between mobile and desktop versions
+                    <SimpleDots
+                        positions={positions}
+                        active={active}
+                        setActive={setActive}
+                        angle={angle}
+                        setAngle={setAngle}
+                        setYearFrom={setYearFrom}
+                        setYearTo={setYearTo}
+                    />
+                }
             </div>
         </div>
     );

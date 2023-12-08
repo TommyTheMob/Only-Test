@@ -17,6 +17,16 @@
   left: 50px;
 
   font-weight: 700;
+
+  transform: scale(0);
+  opacity: 0;
+
+  transition: .8s;
+
+  &.active {
+    transform: scale(1);
+    opacity: 100;
+  }
 }
 
 .dot {
@@ -52,6 +62,12 @@
   left: 50%;
 
   transform: translate(-50%, -50%);
+
+  opacity: 0;
+
+  &.active {
+    opacity: 100;
+  }
 }
 
 .dotNum {

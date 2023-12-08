@@ -1,5 +1,46 @@
+@import "../assets/colors";
+
 .btnsWrapper {
   position: absolute;
   top: 64%;
-  left: 8%;
+  left: 4%;
+}
+
+.activePos {
+  font-size: 14px;
+  line-height: 18.12px;
+  color: $blackBlue;
+
+  margin-bottom: 20px;
+}
+
+.arrow {
+  cursor: pointer;
+
+  &.disabled {
+    cursor: default;
+  }
+}
+
+.leftArrow {
+  margin-right: 20px;
+}
+
+.rightArrow {
+  transform: rotate(-180deg);
+}
+
+@media (max-width:320px) {
+  .btnsWrapper {
+    top: 505px;
+    left: 20px;
+  }
+
+  .activePos {
+    margin-bottom: 10px;
+  }
+
+  .leftArrow {
+    margin-right: 8px;
+  }
 }

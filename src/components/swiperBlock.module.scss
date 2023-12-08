@@ -1,0 +1,91 @@
+@import "../assets/colors";
+
+.swiperWrapper {
+  position: absolute;
+  top: 80%;
+  left: 0;
+  right: 0;
+}
+
+.fadeIn {
+  animation: .8s showSlides;
+}
+
+@keyframes showSlides {
+  from {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+
+  to {
+    opacity: 100;
+    transform: translateY(0);
+  }
+}
+
+.swiper {
+  width: 90%;
+}
+
+
+.swiperSlide {
+  max-width: 400px;
+}
+
+.sliderTitle {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  color: $blue;
+}
+
+.sliderContent {
+  padding-top: 5%;
+
+  font-size: 20px;
+  line-height: 30px;
+  color: $blackBlue;
+}
+
+.btn {
+  cursor: pointer;
+  
+  position: absolute;
+
+  &.hide {
+    display: none;
+  }
+}
+
+.left {
+  top: 10%;
+  left: 0;
+  
+  transform: rotate(180deg);
+}
+
+.right {
+  top: 10%;
+  right: 0;
+}
+
+@media (max-width:320px) {
+  .swiperWrapper {
+    top: 313px;
+  }
+
+  .sliderTitle {
+    font-size: 16px;
+    line-height: 19.2px;
+  }
+
+  .swiperSlide {
+    max-width: none;
+  }
+
+  .sliderContent {
+    font-size: 14px;
+    line-height: 20.3px;
+  }
+}

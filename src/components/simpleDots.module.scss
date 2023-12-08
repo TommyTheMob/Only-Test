@@ -1,0 +1,27 @@
+@import "../assets/colors";
+
+.simpleDotsWrapper {
+  display: flex;
+  justify-content: space-between;
+
+  width: 86px;
+
+  position: absolute;
+  top: 530px;
+  left: 117px;
+}
+
+.dot {
+  border-radius: 50%;
+
+  width: 6px;
+  height: 6px;
+
+  background: $blackBlue40;
+
+  transition: background-color .8s;
+
+  &.active {
+    background: $blackBlue;
+  }
+}

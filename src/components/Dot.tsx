@@ -2,12 +2,11 @@ import React, {useState} from 'react';
 import cn from "classnames";
 import cls from "@/components/Dot.module.scss";
 import {getAngle} from "@/utils/getAngle";
-import {sleep} from "@/utils/sleep"
-import {listYear} from '@/utils/listYear'
+import {listYears} from '@/utils/listYears'
+import {dotsData} from "@/data/dotsData";
 
 interface DotProps {
     position: string
-    num: number
     angle: number
     setAngle: React.Dispatch<React.SetStateAction<number>>
     active: string
@@ -16,19 +15,9 @@ interface DotProps {
     setYearTo: React.Dispatch<React.SetStateAction<number>>
 }
 
-const dotsData = {
-    'topLeft': {name: 'Технологии', from: 1980, to: 1986},
-    'midLeft': {name: 'Кино', from: 1987, to: 1991},
-    'botLeft': {name: 'Литература', from: 1992, to: 1997},
-    'botRight': {name: 'Театр', from: 1999, to: 2004},
-    'midRight': {name: 'Спорт', from: 2006, to: 2014},
-    'topRight': {name: 'Наука', from: 2015, to: 2022},
-}
-
-const Dot = (props: DotProps) => {
+const Dot: React.FC<DotProps> = (props) => {
     const {
         position,
-        num,
         angle,
         setAngle,
         active,
@@ -48,13 +37,16 @@ const Dot = (props: DotProps) => {
     }
 
     const onDotClick = async () => {
-        setActive(position)
-        setAngle(angle + getAngle(position))
+        const angleToSet = angle + getAngle(position)
 
-        await Promise.all([
-            listYear(dotsData[active as keyof typeof dotsData].from, dotsData[position as keyof typeof dotsData].from, setYearFrom),
-            listYear(dotsData[active as keyof typeof dotsData].to, dotsData[position as keyof typeof dotsData].to, setYearTo)
-        ])
+        setActive(position)
+        setAngle(angleToSet)
+
+        await listYears(
+            {from: dotsData[active].from, to: dotsData[position].from, dispatcher: setYearFrom},
+            {from: dotsData[active].to, to: dotsData[position].to, dispatcher: setYearTo}
+        )
+
     }
 
     return (
@@ -68,19 +60,17 @@ const Dot = (props: DotProps) => {
                 <div
                     className={((active === position) || expand) ? cn(cls.dot, cls.active) : cls.dot}
                 />
-                {((active === position) || expand) &&
-                    <>
-                        <div className={cls.dotNumWrapper}>
-                            <div
-                                className={cls.dotNum}
-                                style={{transform: `rotate(${-angle}deg)`}}
-                            >
-                                <div>{num}</div>
-                                {active === position && <div className={cls.name}>{dotsData[position as keyof typeof dotsData].name}</div>}
-                            </div>
+                <div className={cn(cls.dotNumWrapper, (active === position || expand) && cls.active)}>
+                    <div
+                        className={cls.dotNum}
+                        style={{transform: `rotate(${-angle}deg)`}}
+                    >
+                        <div>{dotsData[position].num}</div>
+                        <div className={cn(cls.name, (active === position) && cls.active)}>
+                            {dotsData[position].name}
                         </div>
-                    </>
-                }
+                    </div>
+                </div>
             </div>
         </>
 
