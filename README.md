@@ -1,3 +1,11 @@
+# 🌍 Deploy link
+
+✨ It's now published on [gh-pages](https://tommythemob.github.io/Only-Test/). Just go to the link and 👀 look on it.
+
+# 📱 Adaptive
+
+General 📐 dimensions is <code>1920x1080px</code>. Mobile adaptive is in the box, it procs with <code>max-width: 420px</code>. No tablet/other 💻 screens adaptive so far...
+
 # 📑 Instructions 
 
 ⚙ **Node**: v20.3.1
