@@ -1,6 +1,7 @@
 {
   "name": "only-test",
   "version": "1.0.0",
+  "homepage": "https://tommythemob.github.io/Only-Test/",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +11,9 @@
     "build:prod analyzer": "npm run build:prod analyzer=true",
     "build:mobile": "npm run build:prod platform=mobile",
     "build:desktop": "npm run build:prod platform=desktop",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build:dev"
   },
   "keywords": [],
   "author": "",
@@ -51,6 +54,7 @@
   },
   "dependencies": {
     "classnames": "^2.3.2",
+    "gh-pages": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-responsive": "^9.0.2",
