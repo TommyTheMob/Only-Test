@@ -19,7 +19,7 @@ const SwiperBlock: React.FC<SwiperBlockProps> = (props) => {
         active
     } = props
 
-    const isMobile = useMediaQuery({query: '(max-width: 320px)'})
+    const isMobile = useMediaQuery({query: '(max-width: 430px)'})
     const isDesktop = !isMobile
 
     const [swiperInstance, setSwiperInstance] = useState<SwiperCore>(null)

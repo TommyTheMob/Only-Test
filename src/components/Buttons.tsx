@@ -36,7 +36,7 @@ const Buttons: React.FC<ButtonsProps> = (props) => {
         setYearTo
     } = props
 
-    const isMobile = useMediaQuery({query: '(max-width: 320px)'})
+    const isMobile = useMediaQuery({query: '(max-width: 430px)'})
     const isDesktop = !isMobile
 
     const clickHandler = async (side: string) => {
