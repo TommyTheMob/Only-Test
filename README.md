@@ -4,7 +4,7 @@
 
 # 📱 Adaptive
 
-General 📐 dimensions is <code>1920x1080px</code>. Mobile adaptive is in the box, it procs with <code>max-width: 420px</code>. No tablet/other 💻 screens adaptive so far...
+General 📐 dimensions is <code>1920x1080px</code>. Mobile adaptive is in the box, it procs with <code>max-width: 430px</code>. No tablet/other 💻 screens adaptive so far...
 
 # 📑 Instructions 
 
